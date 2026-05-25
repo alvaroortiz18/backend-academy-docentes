@@ -15,7 +15,11 @@ import { DocentesModule } from './modules/docentes/docentes.module';
       database: process.env.DATABASE || 'academy',
       schema: 'docentes',
       autoLoadEntities: true,
+<<<<<<< HEAD
       synchronize: false, 
+=======
+      synchronize: false, // Cambia a true solo para desarrollo
+>>>>>>> 6c53bd457e41c1ffae31a9486339c4dadf79ee43
     }),
     DocentesModule,
   ],
