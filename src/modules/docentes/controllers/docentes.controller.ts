@@ -33,34 +33,41 @@ export class DocentesController {
         return this.docentesService.remove(Number(id));
     }
 
-<<<<<<< HEAD
-    
-=======
     // HANDLERS PARA MICROSERVICIO
->>>>>>> 6c53bd457e41c1ffae31a9486339c4dadf79ee43
     @MessagePattern({ cmd: 'get_all_docentes' })
-    findAllMs() {
-        return this.docentesService.findAll();
+    async findAllMs() {
+        const rows = await this.docentesService.findAll();
+        return { data: rows };
     }
 
     @MessagePattern({ cmd: 'get_one_docente' })
-    findOneMs(id: number) {
-        return this.docentesService.findOne(Number(id));
+    async findOneMs(id: number) {
+        const row = await this.docentesService.findOne(Number(id));
+        return { data: row };
     }
 
     @MessagePattern({ cmd: 'create_docente' })
-    createMs(createDto: CreateDocenteDto) {
-        return this.docentesService.create(createDto);
+    async createMs(createDto: CreateDocenteDto) {
+        const row = await this.docentesService.create(createDto);
+        return { data: row };
     }
 
     @MessagePattern({ cmd: 'update_docente' })
-    updateMs(data: { id: number, [key: string]: any }) {
+    async updateMs(data: { id: number, [key: string]: any }) {
         const { id, ...updateDto } = data;
-        return this.docentesService.update(Number(id), updateDto);
+        const row = await this.docentesService.update(Number(id), updateDto);
+        return { data: row };
     }
 
     @MessagePattern({ cmd: 'remove_docente' })
-    removeMs(id: number) {
-        return this.docentesService.remove(Number(id));
+    async removeMs(id: number) {
+        await this.docentesService.remove(Number(id));
+        return { data: null };
+    }
+
+    @MessagePattern({ cmd: 'get_all_cargos' })
+    async findAllCargos() {
+        const rows = await this.docentesService.findAllCargos();
+        return { data: rows };
     }
 }

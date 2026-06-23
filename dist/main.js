@@ -10,7 +10,7 @@ async function bootstrap() {
     const tcpPort = Number(process.env.PORT ?? 3003);
     const app = await core_1.NestFactory.createMicroservice(app_module_1.AppModule, {
         transport: microservices_1.Transport.TCP,
-        options: { port: tcpPort },
+        options: { host: '0.0.0.0', port: tcpPort },
     });
     await app.listen();
     logger.log(`Microservicio TCP corriendo en el puerto ${tcpPort}`);
