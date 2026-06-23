@@ -33,11 +33,7 @@ export class DocentesController {
         return this.docentesService.remove(Number(id));
     }
 
-<<<<<<< HEAD
-    
-=======
     // HANDLERS PARA MICROSERVICIO
->>>>>>> 6c53bd457e41c1ffae31a9486339c4dadf79ee43
     @MessagePattern({ cmd: 'get_all_docentes' })
     findAllMs() {
         return this.docentesService.findAll();
